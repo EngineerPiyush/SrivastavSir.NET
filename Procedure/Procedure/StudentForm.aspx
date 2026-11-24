@@ -13,7 +13,7 @@
         <tr>
             <td>Student Gender :</td>
             <td>
-                <asp:radiobuttonlist runat="server">
+                <asp:radiobuttonlist runat="server" ID="rblgender">
                     <asp:listitem text="Male" />
                     <asp:listitem text="Female" />
                     <asp:listitem text="Other" />
@@ -56,12 +56,17 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Student Country">
                             <itemtemplate>
-                                <%#Eval("StudentCountry")%>
+                                <%#Eval("CountryName")%>
                             </itemtemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Student State">
                             <itemtemplate>
-                                <%#Eval("StudentState")%>
+                                <%#Eval("StateName")%>
+                            </itemtemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Student Gender">
+                            <itemtemplate>
+                                <%#Eval("StudentGender") %>
                             </itemtemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>

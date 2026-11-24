@@ -36,6 +36,7 @@ namespace Procedure
             txtname.Text = "";
             ddlcountry.SelectedIndex = 0;
             ddlstate.SelectedIndex = 0;
+            rblgender.ClearSelection();
         }
 
         public void ShowCountry()
@@ -79,7 +80,8 @@ namespace Procedure
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@sname",txtname.Text);
                 cmd.Parameters.AddWithValue("@scountry",ddlcountry.SelectedValue);
-                cmd.Parameters.AddWithValue("@state", ddlstate.SelectedValue);
+                cmd.Parameters.AddWithValue("@sgender", rblgender.SelectedValue);
+                cmd.Parameters.AddWithValue("@sstate", ddlstate.SelectedValue);
                 cmd.ExecuteNonQuery();
                 con.Close();
                 showData();
@@ -87,7 +89,13 @@ namespace Procedure
             else if (btnsave.Text == "Update")
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("Update tblstudents set studentname='" + txtname.Text + "',studentcountry='" + ddlcountry.SelectedValue + "',studentstate='" + ddlstate.SelectedValue + "' where Studentid ='" + ViewState["idViaCmd"] + "'", con);
+                SqlCommand cmd = new SqlCommand("updateStudents", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@sname",txtname.Text);
+                cmd.Parameters.AddWithValue("@scountry",ddlcountry.SelectedValue);
+                cmd.Parameters.AddWithValue("@sstate", ddlstate.SelectedValue);
+                cmd.Parameters.AddWithValue("@sgender", rblgender.SelectedValue);
+                cmd.Parameters.AddWithValue("@sid", ViewState["idViaCmd"]);
                 cmd.ExecuteNonQuery();
                 con.Close();
                 showData();
@@ -124,6 +132,7 @@ namespace Procedure
                 da.Fill(dt);
                 con.Close();
                 txtname.Text = dt.Rows[0]["StudentName"].ToString();
+                rblgender.SelectedValue = dt.Rows[0]["StudentGender"].ToString();
                 ddlcountry.SelectedValue = dt.Rows[0]["StudentCountry"].ToString();
                 ShowState();
                 ddlstate.SelectedValue = dt.Rows[0]["StudentState"].ToString();

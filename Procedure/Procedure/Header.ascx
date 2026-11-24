@@ -2,7 +2,7 @@
 <table>
  <tr>
     <td>
-        <asp:Image ID="imgheader" Width="1350px" Height="100px" ImageUrl="~/kwade1-banner-5456381_1920.jpg" runat="server" />
+        <asp:Image ID="imgheader" Width="1240px" Height="100px" ImageUrl="~/kwade1-banner-5456381_1920.jpg" runat="server" />
     </td>
 </tr>
 </table>
