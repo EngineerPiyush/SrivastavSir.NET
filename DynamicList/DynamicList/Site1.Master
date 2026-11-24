@@ -1,0 +1,63 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="DynamicList.Site1" %>
+
+<%@ Register Src="~/Header.ascx" TagName="myheader" TagPrefix="HeaderControll" %>
+<%@ Register Src="~/Footer.ascx" TagName="myfooter" TagPrefix="FooterControll" %>
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+ <style>
+     #student_form{
+         background:#8acaf7;
+         padding: 20px;
+         margin: 10px;
+         border-radius: 10px;
+     }
+    #student_form tr td input{
+        padding:5px;
+        margin:10px;
+    }
+     #student_form tr td input:hover {
+         text-decoration:none;
+     }
+    #footer{
+        width:100%;
+    }
+    #footer td{
+        text-align:center;
+        background:#a098f0;
+        height:40px;
+        color:white;
+    }
+</style>
+    <form id="form1" runat="server">
+        <div>
+            <table>
+                <tr>
+                    <td> 
+                      <HeaderControll:myheader id="h1" runat="server"></HeaderControll:myheader>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="height:400px; vertical-align:top; background-color:aqua" >
+                        <center>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                        </center>
+                    </td>
+                </tr>
+                <tr>
+                    <td> 
+                      <FooterControll:myfooter id="f1" runat="server"></FooterControll:myfooter>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>
